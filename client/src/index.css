@@ -1,0 +1,202 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply font-sans text-secondary-900 bg-background;
+  }
+
+  /* Focus ring for accessibility */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
+  }
+
+  /* Scrollbar styling */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-secondary-100 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-secondary-300 rounded-full hover:bg-secondary-400;
+  }
+
+  /* Force dark black text inside input boxes by default */
+  input,
+  textarea,
+  select {
+    color: #0f172a;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #64748b;
+  }
+}
+
+/* Specificity overrides for form inputs across modals, cards, and admin panels */
+input,
+textarea,
+select,
+input.bg-surface,
+textarea.bg-surface,
+select.bg-surface,
+input.bg-white,
+textarea.bg-white,
+select.bg-white,
+.bg-surface input,
+.bg-surface textarea,
+.bg-surface select,
+.bg-white input,
+.bg-white textarea,
+.bg-white select,
+[role="dialog"] input,
+[role="dialog"] textarea,
+[role="dialog"] select,
+[role="dialog"] option,
+form input,
+form textarea,
+form select {
+  color: #0f172a !important;
+}
+
+/* Explicitly preserve white text for dark search inputs and dark buttons */
+input.text-white,
+textarea.text-white,
+select.text-white,
+input.bg-slate-950,
+input.bg-slate-900,
+textarea.bg-slate-950,
+textarea.bg-slate-900 {
+  color: #ffffff !important;
+}
+
+[role="dialog"] label {
+  color: #334155 !important;
+}
+
+@layer components {
+  /* Card base */
+  .card {
+    @apply bg-surface rounded-card border border-border shadow-card;
+  }
+
+  .card-hover {
+    @apply card transition-all duration-200 hover:shadow-card-hover hover:-translate-y-0.5;
+  }
+
+  /* Badge variants */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  .badge-primary {
+    @apply badge bg-primary-100 text-primary-700;
+  }
+
+  .badge-success {
+    @apply badge bg-success-50 text-success-700;
+  }
+
+  .badge-warning {
+    @apply badge bg-warning-50 text-warning-700;
+  }
+
+  .badge-danger {
+    @apply badge bg-danger-50 text-danger-700;
+  }
+
+  .badge-muted {
+    @apply badge bg-secondary-100 text-secondary-600;
+  }
+
+  /* Input base */
+  .input {
+    @apply w-full px-3 py-2 rounded-lg border border-border bg-surface text-secondary-900
+           placeholder:text-muted text-sm
+           focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary
+           transition-colors duration-150
+           disabled:bg-secondary-50 disabled:cursor-not-allowed;
+  }
+
+  .input-error {
+    @apply input border-danger focus:ring-danger/20 focus:border-danger;
+  }
+
+  /* Button base */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-medium text-sm
+           transition-all duration-150 cursor-pointer
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary text-white hover:bg-primary-600 active:bg-primary-700
+           focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply btn bg-secondary-100 text-secondary-700 hover:bg-secondary-200 active:bg-secondary-300;
+  }
+
+  .btn-danger {
+    @apply btn bg-danger text-white hover:bg-danger-600 active:bg-danger-700;
+  }
+
+  .btn-ghost {
+    @apply btn bg-transparent text-secondary-600 hover:bg-secondary-100 active:bg-secondary-200;
+  }
+
+  .btn-outline {
+    @apply btn border border-border bg-surface text-secondary-700 hover:bg-secondary-50 active:bg-secondary-100;
+  }
+
+  /* Skeleton loader */
+  .skeleton {
+    @apply bg-secondary-200 rounded animate-pulse-subtle;
+  }
+
+  /* Sidebar link */
+  .sidebar-link {
+    @apply flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-secondary-500
+           transition-all duration-150
+           hover:bg-primary-50 hover:text-primary;
+  }
+
+  .sidebar-link-active {
+    @apply sidebar-link bg-primary-50 text-primary;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}

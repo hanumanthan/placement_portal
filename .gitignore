@@ -1,0 +1,57 @@
+# Dependencies
+node_modules/
+*/node_modules/
+client/node_modules/
+server/node_modules/
+
+# Environment files (contains sensitive API keys and secrets)
+.env
+.env.*
+*.env
+client/.env
+server/.env
+!.env.example
+!client/.env.example
+!server/.env.example
+
+# Build outputs
+dist/
+dist-ssr/
+build/
+client/dist/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Server temporary files & User uploads (keeps repo lightweight & private)
+server/uploads/resumes/*
+!server/uploads/resumes/.gitkeep
+server/uploads/photos/*
+!server/uploads/photos/.gitkeep
+server/uploads/logos/*
+!server/uploads/logos/.gitkeep
+server/uploads/resources/*
+!server/uploads/resources/.gitkeep
+
+# Compiled class files and test artifacts
+*.class
+server/test_j/*.class
+
+# OS / Editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/launch.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
